@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1RPA.com - 机器人流程自动化的未来</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --accent: #8b5cf6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            padding: 2rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            letter-spacing: -1px;
+        }
+        
+        .logo span {
+            color: var(--light);
+        }
+        
+        /* 英雄区域样式 */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+        
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--gray);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+        
+        /* 倒计时样式 */
+        .countdown {
+            margin: 3rem 0;
+        }
+        
+        .countdown h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+        
+        .countdown-timer {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        /* 特性区域样式 */
+        .features {
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 30px 30px 0 0;
+            margin-top: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon i {
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        /* 订阅区域样式 */
+        .subscribe {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        
+        .subscribe-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .subscribe h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .subscribe p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .subscribe-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .subscribe-input {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            font-size: 1rem;
+        }
+        
+        .subscribe-input:focus {
+            outline: none;
+        }
+        
+        .subscribe-btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0 50px 50px 0;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .subscribe-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* 页脚样式 */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* 动画元素 */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .subscribe-form {
+                flex-direction: column;
+            }
+            
+            .subscribe-input {
+                border-radius: 50px;
+                margin-bottom: 1rem;
+            }
+            
+            .subscribe-btn {
+                border-radius: 50px;
+                width: 100%;
+            }
+            
+            .countdown-timer {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动背景元素 -->
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
+        <div class="floating-element" style="width: 70px; height: 70px; top: 30%; left: 70%;"></div>
+        <div class="floating-element" style="width: 120px; height: 120px; top: 80%; left: 10%;"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">1<span>RPA</span>.com</div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>重新定义<span>业务流程自动化</span>的未来</h1>
+                <p>1RPA.com 即将开启，为您带来革命性的机器人流程自动化解决方案，让企业效率提升至全新高度。</p>
+                
+                <div class="cta-buttons">
+                    <a href="#subscribe" class="btn btn-primary">抢先体验</a>
+                    <a href="#features" class="btn btn-secondary">了解更多</a>
+                </div>
+                
+                <div class="countdown">
+                    <h3>正式上线倒计时</h3>
+                    <div class="countdown-timer">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">天</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">时</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">分</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">秒</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features" id="features">
+            <div class="section-title">
+                <h2>为何选择 1RPA？</h2>
+                <p>我们致力于打造最智能、最易用的RPA平台，帮助企业实现数字化转型</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>⚡</i>
+                    </div>
+                    <h3>极速部署</h3>
+                    <p>无需复杂配置，快速实现业务流程自动化，节省大量时间和人力资源。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🔒</i>
+                    </div>
+                    <h3>企业级安全</h3>
+                    <p>采用最先进的安全协议，确保您的数据和业务流程得到全面保护。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🤖</i>
+                    </div>
+                    <h3>智能自动化</h3>
+                    <p>结合AI技术，实现认知自动化，处理非结构化数据和复杂决策流程。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>📊</i>
+                    </div>
+                    <h3>全面分析</h3>
+                    <p>提供详细的性能指标和分析报告，帮助您优化业务流程和资源分配。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🌐</i>
+                    </div>
+                    <h3>无缝集成</h3>
+                    <p>与您现有的企业系统无缝集成，无需改变现有工作流程。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i>🚀</i>
+                    </div>
+                    <h3>持续创新</h3>
+                    <p>我们的团队不断研发新功能，确保您始终使用最先进的自动化技术。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="subscribe" id="subscribe">
+            <div class="subscribe-box">
+                <h2>抢先体验机会</h2>
+                <p>留下您的邮箱，我们将在产品正式发布前通知您，并提供独家早期体验机会。</p>
+                
+                <form class="subscribe-form">
+                    <input type="email" class="subscribe-input" placeholder="请输入您的电子邮箱" required>
+                    <button type="submit" class="subscribe-btn">订阅通知</button>
+                </form>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#">隐私政策</a>
+                <a href="#">服务条款</a>
+                <a href="#">联系我们</a>
+            </div>
+            <div class="copyright">© 2025 1RPA.com 版权所有</div>
+        </footer>
+    </div>
+
+    <script>
+        // 倒计时功能
+        function updateCountdown() {
+            // 设置目标日期（示例为30天后）
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 30);
+            
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            // 计算天、时、分、秒
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // 更新显示
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+            
+            // 如果倒计时结束
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector(".countdown").innerHTML = "<h3>1RPA.com 已正式上线！</h3>";
+            }
+        }
+        
+        // 初始调用并设置定时器
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // 表单提交处理
+        document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.subscribe-input').value;
+            alert(`感谢您的订阅！我们会在产品发布时通过 ${email} 通知您。`);
+            this.querySelector('.subscribe-input').value = '';
+        });
+    </script>
+</body>
+</html>
