@@ -514,10 +514,8 @@
     <script>
         // 倒计时功能
         function updateCountdown() {
-            // 设置目标日期（示例为30天后）
-            const targetDate = new Date();
-            targetDate.setDate(targetDate.getDate() + 30);
-            
+            // 设置目标日期为2026年1月1日
+            const targetDate = new Date("January 1, 2026 00:00:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
             
