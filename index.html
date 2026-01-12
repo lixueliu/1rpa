@@ -3,552 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1RPA.com - 机器人流程自动化的未来</title>
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0ea5e9;
-            --accent: #8b5cf6;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 头部样式 */
-        header {
-            padding: 2rem 0;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            letter-spacing: -1px;
-        }
-        
-        .logo span {
-            color: var(--light);
-        }
-        
-        /* 英雄区域样式 */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 4rem 0;
-        }
-        
-        .hero-content {
-            flex: 1;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .hero h1 span {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-        
-        .btn {
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--light);
-            border: 2px solid var(--gray);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--secondary);
-            color: var(--secondary);
-        }
-        
-        /* 倒计时样式 */
-        .countdown {
-            margin: 3rem 0;
-        }
-        
-        .countdown h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-        
-        .countdown-timer {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            min-width: 80px;
-        }
-        
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .countdown-label {
-            font-size: 0.8rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-        }
-        
-        /* 特性区域样式 */
-        .features {
-            padding: 6rem 0;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 30px 30px 0 0;
-            margin-top: 2rem;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title p {
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .feature-icon i {
-            font-size: 1.5rem;
-        }
-        
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-card p {
-            color: var(--gray);
-        }
-        
-        /* 订阅区域样式 */
-        .subscribe {
-            padding: 6rem 0;
-            text-align: center;
-        }
-        
-        .subscribe-box {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%);
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .subscribe h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .subscribe p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .subscribe-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .subscribe-input {
-            flex: 1;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 50px 0 0 50px;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--dark);
-            font-size: 1rem;
-        }
-        
-        .subscribe-input:focus {
-            outline: none;
-        }
-        
-        .subscribe-btn {
-            padding: 0.75rem 2rem;
-            border-radius: 0 50px 50px 0;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        
-        .subscribe-btn:hover {
-            background: var(--primary-dark);
-        }
-        
-        /* 页脚样式 */
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .copyright {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* 动画元素 */
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .floating-element {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(-1000px) rotate(720deg);
+    <title>1RPA.com - 智能流程自动化，释放企业生产力</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF', // 主色调（科技蓝）
+                        secondary: '#0E2B8A', // 辅助色
+                        neutral: '#F5F7FA', // 中性色
+                        dark: '#1D2129', // 深色文本
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
             }
         }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
             }
-            
-            .cta-buttons {
-                flex-direction: column;
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
-            
-            .subscribe-form {
-                flex-direction: column;
+            .card-hover {
+                transition: all 0.3s ease;
             }
-            
-            .subscribe-input {
-                border-radius: 50px;
-                margin-bottom: 1rem;
-            }
-            
-            .subscribe-btn {
-                border-radius: 50px;
-                width: 100%;
-            }
-            
-            .countdown-timer {
-                justify-content: center;
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 24px rgba(22, 93, 255, 0.15);
             }
         }
     </style>
 </head>
-<body>
-    <!-- 浮动背景元素 -->
-    <div class="floating-elements">
-        <div class="floating-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
-        <div class="floating-element" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
-        <div class="floating-element" style="width: 70px; height: 70px; top: 30%; left: 70%;"></div>
-        <div class="floating-element" style="width: 120px; height: 120px; top: 80%; left: 10%;"></div>
-    </div>
-    
-    <div class="container">
-        <header>
-            <div class="logo">1<span>RPA</span>.com</div>
-        </header>
+<body class="font-sans text-dark bg-white">
+    <!-- 导航栏（固定顶部，滚动时背景变化） -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-primary text-2xl font-bold">1RPA.com</span>
+                    <span class="hidden sm:inline text-sm text-gray-500">智能流程自动化</span>
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-primary transition-colors">核心功能</a>
+                    <a href="#advantages" class="text-gray-600 hover:text-primary transition-colors">产品优势</a>
+                    <a href="#scenarios" class="text-gray-600 hover:text-primary transition-colors">应用场景</a>
+                    <a href="#faq" class="text-gray-600 hover:text-primary transition-colors">常见问题</a>
+                </nav>
+                
+                <!-- 预约咨询按钮 -->
+                <a href="#notify" class="hidden sm:inline-block bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
+                    预约体验
+                </a>
+                
+                <!-- 移动端菜单按钮 -->
+                <button id="menuBtn" class="md:hidden text-gray-600 hover:text-primary">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
         
-        <section class="hero">
-            <div class="hero-content">
-                <h1>重新定义<span>业务流程自动化</span>的未来</h1>
-                <p>1RPA.com 即将开启，为您带来革命性的机器人流程自动化解决方案，让企业效率提升至全新高度。</p>
-                
-                <div class="cta-buttons">
-                    <a href="#subscribe" class="btn btn-primary">抢先体验</a>
-                    <a href="#features" class="btn btn-secondary">了解更多</a>
-                </div>
-                
-                <div class="countdown">
-                    <h3>正式上线倒计时</h3>
-                    <div class="countdown-timer">
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">天</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">时</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">分</div>
-                        </div>
-                        <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">秒</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- 移动端导航菜单（默认隐藏） -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#features" class="text-gray-600 hover:text-primary py-2">核心功能</a>
+                <a href="#advantages" class="text-gray-600 hover:text-primary py-2">产品优势</a>
+                <a href="#scenarios" class="text-gray-600 hover:text-primary py-2">应用场景</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary py-2">常见问题</a>
+                <a href="#notify" class="bg-primary text-white px-6 py-2 rounded-lg text-center hover:bg-secondary">
+                    预约体验
+                </a>
             </div>
-        </section>
-        
-        <section class="features" id="features">
-            <div class="section-title">
-                <h2>为何选择 1RPA？</h2>
-                <p>我们致力于打造最智能、最易用的RPA平台，帮助企业实现数字化转型</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>⚡</i>
-                    </div>
-                    <h3>极速部署</h3>
-                    <p>无需复杂配置，快速实现业务流程自动化，节省大量时间和人力资源。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🔒</i>
-                    </div>
-                    <h3>企业级安全</h3>
-                    <p>采用最先进的安全协议，确保您的数据和业务流程得到全面保护。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🤖</i>
-                    </div>
-                    <h3>智能自动化</h3>
-                    <p>结合AI技术，实现认知自动化，处理非结构化数据和复杂决策流程。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>📊</i>
-                    </div>
-                    <h3>全面分析</h3>
-                    <p>提供详细的性能指标和分析报告，帮助您优化业务流程和资源分配。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🌐</i>
-                    </div>
-                    <h3>无缝集成</h3>
-                    <p>与您现有的企业系统无缝集成，无需改变现有工作流程。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i>🚀</i>
-                    </div>
-                    <h3>持续创新</h3>
-                    <p>我们的团队不断研发新功能，确保您始终使用最先进的自动化技术。</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="subscribe" id="subscribe">
-            <div class="subscribe-box">
-                <h2>抢先体验机会</h2>
-                <p>留下您的邮箱，我们将在产品正式发布前通知您，并提供独家早期体验机会。</p>
-                
-                <form class="subscribe-form">
-                    <input type="email" class="subscribe-input" placeholder="请输入您的电子邮箱" required>
-                    <button type="submit" class="subscribe-btn">订阅通知</button>
-                </form>
-            </div>
-        </section>
-        
-        <footer>
-            <div class="footer-links">
-                <a href="#">隐私政策</a>
-                <a href="#">服务条款</a>
-                <a href="#">联系我们</a>
-            </div>
-            <div class="copyright">© 2025 1RPA.com 版权所有</div>
-        </footer>
-    </div>
+        </div>
+    </header>
 
+    <!-- 英雄区（核心宣传） -->
+    <section class="pt-32 pb-20 bg-gradient-to-b from-neutral to-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 space-y-6">
+                    <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+                        即将上线 · 智能RPA解决方案
+                    </span>
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow">
+                        让流程自动化<br>
+                        <span class="text-primary">释放企业生产力</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        1RPA专注于为企业提供简单、高效、低成本的流程自动化解决方案，
+                        覆盖财务、人事、客服、运营等多场景，无需代码即可快速部署。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#notify" class="bg-primary text-white px-8 py-3 rounded-lg text-center hover:bg-secondary transition-colors font-medium">
+                            预约抢先体验
+                        </a>
+                        <a href="#features" class="border border-gray-300 text-dark px-8 py-3 rounded-lg text-center hover:border-primary hover:text-primary transition-colors font-medium">
+                            了解核心功能
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-4 pt-2">
+                        <div class="flex -space-x-2">
+                            <img src="https://picsum.photos/40/40?random=1" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=2" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=3" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <p class="text-sm text-gray-500">已有<span class="text-primary font-medium">200+</span>企业预约体验</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="https://picsum.photos/800/600?random=10" alt="1RPA产品演示" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品优势 -->
+    <section id="advantages" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">为什么选择1RPA？</h2>
+                <p class="text-gray-600 text-lg">我们的核心优势，让自动化更简单、更高效</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 优势卡片1 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">零代码搭建</h3>
+                    <p class="text-gray-600">无需编程基础，通过拖拽式可视化界面，快速配置自动化流程，降低使用门槛。</p>
+                </div>
+                
+                <!-- 优势卡片2 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-rocket text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">极速部署</h3>
+                    <p class="text-gray-600">轻量化架构设计，支持本地/云端部署，5分钟完成环境配置，快速落地自动化场景。</p>
+                </div>
+                
+                <!-- 优势卡片3 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">安全可靠</h3>
+                    <p class="text-gray-600">全程加密传输，细粒度权限控制，操作日志全留存，符合企业级安全合规要求。</p>
+                </div>
+                
+                <!-- 优势卡片4 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-layer-group text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">多系统兼容</h3>
+                    <p class="text-gray-600">兼容Windows/Mac/Linux系统，支持对接ERP、CRM、OA等主流企业软件，打破数据孤岛。</p>
+                </div>
+                
+                <!-- 优势卡片5 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">数据可视化</h3>
+                    <p class="text-gray-600">实时监控流程运行状态，自动生成多维度分析报表，量化自动化降本增效成果。</p>
+                </div>
+                
+                <!-- 优势卡片6 -->
+                <div class="bg-neutral rounded-xl p-8 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-headset text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">7×24技术支持</h3>
+                    <p class="text-gray-600">专业技术团队全程护航，提供一对一方案咨询、流程优化指导，保障业务稳定运行。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section id="features" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">核心功能</h2>
+                <p class="text-gray-600 text-lg">覆盖企业全流程自动化需求，打造一站式RPA解决方案</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://picsum.photos/800/600?random=20" alt="1RPA核心功能演示" class="rounded-xl shadow-xl w-full h-auto">
+                </div>
+                
+                <div class="lg:w-1/2 space-y-8">
+                    <!-- 功能项1 -->
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-mouse-pointer text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">键鼠自动化</h3>
+                            <p class="text-gray-600">模拟人工键鼠操作，自动完成数据录入、表单填写、文件下载等重复性工作，准确率100%。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项2 -->
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-file-excel text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">数据处理自动化</h3>
+                            <p class="text-gray-600">自动抓取、清洗、转换、汇总多来源数据，支持Excel/CSV/数据库等格式，提升数据处理效率。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项3 -->
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-envelope text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">消息通知自动化</h3>
+                            <p class="text-gray-600">自动发送邮件、短信、企业微信/钉钉消息，支持自定义模板，及时触达相关人员。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能项4 -->
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-clock text-primary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">定时任务执行</h3>
+                            <p class="text-gray-600">支持按固定时间、间隔或触发条件自动执行流程，无需人工值守，7×24小时不间断运行。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section id="scenarios" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">应用场景</h2>
+                <p class="text-gray-600 text-lg">适用于各行业、各部门的自动化需求</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 场景卡片1 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden card-hover">
+                    <img src="https://picsum.photos/600/300?random=30" alt="财务自动化" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">财务自动化</h3>
+                        <p class="text-gray-600 mb-4">自动完成发票核验、报销审核、银行对账、工资核算、税务申报等流程，减少人工错误，提升财务效率。</p>
+                        <a href="#notify" class="text-primary font-medium hover:underline">预约财务场景方案 <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片2 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden card-hover">
+                    <img src="https://picsum.photos/600/300?random=31" alt="人事自动化" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">人事自动化</h3>
+                        <p class="text-gray-600 mb-4">自动完成简历筛选、入职办理、考勤统计、社保公积金申报、员工档案管理等工作，解放HR双手。</p>
+                        <a href="#notify" class="text-primary font-medium hover:underline">预约人事场景方案 <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片3 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden card-hover">
+                    <img src="https://picsum.photos/600/300?random=32" alt="客服自动化" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">客服自动化</h3>
+                        <p class="text-gray-600 mb-4">自动回复常见问题、工单分配、客户信息录入、售后跟进提醒，提升客户响应速度和满意度。</p>
+                        <a href="#notify" class="text-primary font-medium hover:underline">预约客服场景方案 <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片4 -->
+                <div class="border border-gray-200 rounded-xl overflow-hidden card-hover">
+                    <img src="https://picsum.photos/600/300?random=33" alt="运营自动化" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">运营自动化</h3>
+                        <p class="text-gray-600 mb-4">自动完成数据统计、报表生成、内容发布、订单处理、库存预警，提升运营效率和决策准确性。</p>
+                        <a href="#notify" class="text-primary font-medium hover:underline">预约运营场景方案 <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section id="faq" class="py-20 bg-neutral">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">常见问题</h2>
+                <p class="text-gray-600 text-lg">解答你关于1RPA的核心疑问</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- 问题1 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left font-bold text-lg">
+                        <span>1RPA适合哪些规模的企业使用？</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        1RPA适用于所有规模的企业，从初创公司到大型集团都能适配。我们提供不同版本的解决方案：小微企业版轻量化、低成本，满足基础自动化需求；中大型企业版支持集群部署、多租户管理，满足复杂的企业级自动化场景。
+                    </div>
+                </div>
+                
+                <!-- 问题2 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left font-bold text-lg">
+                        <span>使用1RPA需要专业的技术人员吗？</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        不需要。1RPA采用零代码可视化设计，普通业务人员经过1-2小时的培训即可独立搭建自动化流程。同时我们提供详细的使用文档、视频教程和一对一指导，确保非技术人员也能轻松上手。
+                    </div>
+                </div>
+                
+                <!-- 问题3 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left font-bold text-lg">
+                        <span>1RPA的数据安全如何保障？</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        1RPA从多个层面保障数据安全：1) 传输加密：所有数据采用HTTPS/TLS加密传输；2) 存储加密：敏感数据加密存储，仅授权人员可访问；3) 权限控制：细粒度的角色权限管理，不同人员仅能操作对应权限范围内的流程和数据；4) 操作审计：所有操作行为全程日志记录，可追溯、可审计；5) 本地部署：支持私有化部署，数据不落地第三方服务器。
+                    </div>
+                </div>
+                
+                <!-- 问题4 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <button class="faq-toggle w-full flex justify-between items-center text-left font-bold text-lg">
+                        <span>1RPA上线后，多久能看到效果？</span>
+                        <i class="fa-solid fa-chevron-down text-primary transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden mt-4 text-gray-600">
+                        通常情况下，简单的自动化场景（如数据录入、报表生成）可在1天内完成配置并上线使用；复杂场景（如跨系统数据流转）可在1周内落地。根据客户案例，平均可减少70%以上的重复性工作，3-6个月即可收回投入成本。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 上线预约通知（对接企业微信机器人） -->
+    <section id="notify" class="py-20 bg-primary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">预约1RPA抢先体验</h2>
+                    <p class="text-gray-600 text-lg">产品即将正式上线，预约即可享受：<br>30天免费试用 + 一对一方案咨询 + 专属优惠</p>
+                </div>
+                
+                <!-- 保留原有样式的表单 -->
+                <form id="wecomForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">企业名称 *</label>
+                            <input type="text" id="name" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入企业名称" required>
+                        </div>
+                        <div>
+                            <label for="contact" class="block text-gray-700 font-medium mb-2">联系人 *</label>
+                            <input type="text" id="contact" name="username" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的姓名" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-medium mb-2">联系电话 *</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的手机号码" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">邮箱 *</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的邮箱地址" required>
+                    </div>
+                    
+                    <div>
+                        <label for="need" class="block text-gray-700 font-medium mb-2">您的自动化需求（可选）</label>
+                        <textarea id="need" name="requirement" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请简要描述您想要自动化的业务场景或需求"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg hover:bg-secondary transition-colors font-medium text-lg">
+                        提交预约
+                    </button>
+                    
+                    <p class="text-center text-sm text-gray-500">
+                        提交即表示您同意我们的<a href="#" class="text-primary hover:underline">隐私政策</a>和<a href="#" class="text-primary hover:underline">服务条款</a>
+                    </p>
+                </form>
+                
+                <!-- 提交成功提示（默认隐藏） -->
+                <div id="successMsg" class="hidden text-center py-8">
+                    <i class="fa-solid fa-check-circle text-4xl text-green-500 mb-4"></i>
+                    <h3 class="text-xl font-bold text-green-600 mb-2">预约提交成功！</h3>
+                    <p class="text-gray-600">我们将在产品上线后第一时间联系您，感谢您的关注！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-white text-2xl font-bold">1RPA.com</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">智能流程自动化，释放企业生产力</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-weixin text-xl"></i> <!-- 替换 fa-weixin 为 fa-brands fa-wechat -->
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-weibo text-xl"></i> <!-- 补充 fa-brands 前缀 -->
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-brands fa-github text-xl"></i> <!-- 补充 fa-brands 前缀 -->
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">产品</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">核心功能</a></li>
+                        <li><a href="#advantages" class="text-gray-400 hover:text-white transition-colors">产品优势</a></li>
+                        <li><a href="#scenarios" class="text-gray-400 hover:text-white transition-colors">应用场景</a></li>
+                        <li><a href="#notify" class="text-gray-400 hover:text-white transition-colors">预约体验</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">支持</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">使用文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">视频教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-gray-400">
+                            <i class="fa-solid fa-phone shrink-0"></i>
+                            <span>13148707120</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-400">
+                            <i class="fa-solid fa-envelope shrink-0"></i>
+                            <span>service@wisefuture.tech</span>
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-400">
+                            <i class="fa-solid fa-map-marker-alt shrink-0"></i>
+                            <span>深圳市南山区软件产业基地6栋</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2026 1RPA.com 保留所有权利 | 粤ICP备2024238152号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript（整合所有交互+企业微信机器人提交逻辑） -->
     <script>
-        // 倒计时功能
-        function updateCountdown() {
-            // 设置目标日期为2026年1月1日
-            const targetDate = new Date("March 31, 2026 00:00:00").getTime();
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            
-            // 计算天、时、分、秒
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            // 更新显示
-            document.getElementById("days").textContent = days.toString().padStart(2, '0');
-            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-            
-            // 如果倒计时结束
-            if (distance < 0) {
-                clearInterval(countdownTimer);
-                document.querySelector(".countdown").innerHTML = "<h3>1RPA.com 已正式上线！</h3>";
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
             }
-        }
-        
-        // 初始调用并设置定时器
-        updateCountdown();
-        const countdownTimer = setInterval(updateCountdown, 1000);
-        
-        // 表单提交处理
-        document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('.subscribe-input').value;
-            alert(`感谢您的订阅！我们会在产品发布时通过 ${email} 通知您。`);
-            this.querySelector('.subscribe-input').value = '';
         });
+
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            // 切换图标
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // 常见问题折叠/展开
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                // 切换内容显示/隐藏
+                content.classList.toggle('hidden');
+                // 切换图标旋转
+                icon.classList.toggle('rotate-180');
+                
+                // 关闭其他展开的问题
+                faqToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        const otherContent = otherToggle.nextElementSibling;
+                        const otherIcon = otherToggle.querySelector('i');
+                        otherContent.classList.add('hidden');
+                        otherIcon.classList.remove('rotate-180');
+                    }
+                });
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单（如果打开）
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.replace('fa-times', 'fa-bars');
+                    }
+                }
+            });
+        });
+
+        // ====================== 企业微信机器人表单提交逻辑 ======================
+        const wecomForm = document.getElementById('wecomForm');
+        const successMsg = document.getElementById('successMsg');
+        // ************************ 请替换为你的企业微信群机器人Webhook地址 ************************
+        const WECOM_WEBHOOK_URL = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=35994e9d-d659-48a1-b7fd-14b1c5e556c4';
+        // *************************************************************************************
+
+        if (wecomForm) {
+            wecomForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // 阻止默认表单提交
+                
+                const submitBtn = wecomForm.querySelector('button[type="submit"]');
+                // 提交中状态：禁用按钮，防止重复提交
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> 提交中...';
+                
+                try {
+                    // 收集表单数据
+                    const formData = new FormData(wecomForm);
+                    const data = {
+                        company: formData.get('company'),
+                        username: formData.get('username'),
+                        phone: formData.get('phone'),
+                        email: formData.get('email'),
+                        requirement: formData.get('requirement') || '无'
+                    };
+                    
+                    // 构造企业微信Markdown消息（结构化展示更易读）
+                    const wecomMsg = {
+                        "msgtype": "markdown",
+                        "markdown": {
+                            "content": `### 1RPA产品预约申请 \n` +
+                                      `- **企业名称**：${data.company} \n` +
+                                      `- **联系人**：${data.username} \n` +
+                                      `- **联系电话**：<font color="info">${data.phone}</font> \n` +
+                                      `- **邮箱**：${data.email} \n` +
+                                      `- **自动化需求**：${data.requirement}`
+                        }
+                    };
+                    
+                    // 发送数据到企业微信机器人
+                    const response = await fetch(WECOM_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        },
+                        body: JSON.stringify(wecomMsg)
+                    });
+                    
+                    const result = await response.json();
+                    // 企业微信返回errcode=0表示成功
+                    if (result.errcode === 0) {
+                        // 提交成功：隐藏表单，显示成功提示
+                        wecomForm.classList.add('hidden');
+                        successMsg.classList.remove('hidden');
+                    } else {
+                        throw new Error(`提交失败：${result.errmsg}`);
+                    }
+                } catch (error) {
+                    alert('预约提交失败：' + error.message + '，请稍后重试');
+                    // 恢复按钮状态
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '提交预约';
+                }
+            });
+        }
     </script>
 </body>
 </html>
