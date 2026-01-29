@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- 引入EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!-- 自定义Tailwind配置 -->
     <script>
         tailwind.config = {
@@ -562,26 +564,29 @@
             });
         });
 
-        // ====================== 企业微信机器人表单提交逻辑 ======================
+        // ====================== EmailJS 表单提交逻辑 ======================
         const wecomForm = document.getElementById('wecomForm');
         const successMsg = document.getElementById('successMsg');
-        // ************************ 请替换为你的企业微信群机器人Webhook地址 ************************
-        const WECOM_WEBHOOK_URL = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=35994e9d-d659-48a1-b7fd-14b1c5e556c4';
+        // ************************ 请替换为你的 EmailJS 配置信息 ************************
+        const EMAILJS_PUBLIC_KEY = 'Jm_1wu3LqOlvf0Qlj';
+        const EMAILJS_SERVICE_ID = 'service_feishu_li';
+        const EMAILJS_TEMPLATE_ID = 'template_p1f9wke';
         // *************************************************************************************
+
+        // 初始化 EmailJS
+        emailjs.init(EMAILJS_PUBLIC_KEY);
 
         if (wecomForm) {
             wecomForm.addEventListener('submit', async (e) => {
-                e.preventDefault(); // 阻止默认表单提交
+                e.preventDefault();
                 
                 const submitBtn = wecomForm.querySelector('button[type="submit"]');
-                // 提交中状态：禁用按钮，防止重复提交
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> 提交中...';
                 
                 try {
-                    // 收集表单数据
                     const formData = new FormData(wecomForm);
-                    const data = {
+                    const templateParams = {
                         company: formData.get('company'),
                         username: formData.get('username'),
                         phone: formData.get('phone'),
@@ -589,40 +594,12 @@
                         requirement: formData.get('requirement') || '无'
                     };
                     
-                    // 构造企业微信Markdown消息（结构化展示更易读）
-                    const wecomMsg = {
-                        "msgtype": "markdown",
-                        "markdown": {
-                            "content": `### 1RPA产品预约申请 \n` +
-                                      `- **企业名称**：${data.company} \n` +
-                                      `- **联系人**：${data.username} \n` +
-                                      `- **联系电话**：<font color="info">${data.phone}</font> \n` +
-                                      `- **邮箱**：${data.email} \n` +
-                                      `- **自动化需求**：${data.requirement}`
-                        }
-                    };
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
                     
-                    // 发送数据到企业微信机器人
-                    const response = await fetch(WECOM_WEBHOOK_URL, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json;charset=utf-8'
-                        },
-                        body: JSON.stringify(wecomMsg)
-                    });
-                    
-                    const result = await response.json();
-                    // 企业微信返回errcode=0表示成功
-                    if (result.errcode === 0) {
-                        // 提交成功：隐藏表单，显示成功提示
-                        wecomForm.classList.add('hidden');
-                        successMsg.classList.remove('hidden');
-                    } else {
-                        throw new Error(`提交失败：${result.errmsg}`);
-                    }
+                    wecomForm.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
                 } catch (error) {
                     alert('预约提交失败：' + error.message + '，请稍后重试');
-                    // 恢复按钮状态
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '提交预约';
                 }
